@@ -39,6 +39,8 @@ public class GrabHandPose : MonoBehaviour
         
     }
 
+    
+
     // Hand Pose Set up
     public void SetupPose(BaseInteractionEventArgs arg)
     {
@@ -55,7 +57,6 @@ public class GrabHandPose : MonoBehaviour
             {
                 SetHandDataValues(handData, leftHandPose);
             }
-
 
             StartCoroutine(SetHandDataRoutine(handData, finalHandPosition, finalHandRotation, finalFingerRotations, startingHandPosition, startingHandRotation, startingFingerRotations));
         }
@@ -117,9 +118,12 @@ public class GrabHandPose : MonoBehaviour
 
         while(timer < poseTransitionDuration)
         {
-            float t = timer / poseTransitionDuration;
-            Vector3 p = Vector3.Lerp(startingPosition, newPosition, t);
-            Quaternion r = Quaternion.Lerp(startingRotation, newRotation, t);
+            float t = Mathf.Clamp(timer / poseTransitionDuration, 0.0f, 1.0f);
+            // Vector3 p = Vector3.Lerp(startingPosition, newPosition, t);
+            // Quaternion r = Quaternion.Lerp(startingRotation, newRotation, t);
+
+            Vector3 p = newPosition;
+            Quaternion r = newRotation;
 
             h.root.localPosition = p;
             h.root.localRotation = r;
@@ -127,12 +131,14 @@ public class GrabHandPose : MonoBehaviour
 
             for(int i = 0; i < newBonesRotation.Length; i++)
             {
-                h.fingerBones[i].localRotation = Quaternion.Lerp(startingBonesRotation[i], newBonesRotation[i], t);
+                // h.fingerBones[i].localRotation = Quaternion.Lerp(startingBonesRotation[i], newBonesRotation[i], t);
+                h.fingerBones[i].localRotation = newBonesRotation[i];
             }
 
             timer += Time.deltaTime;
-            yield return null;
         }
+
+        yield return null;
     }
 
 #if UNITY_EDITOR

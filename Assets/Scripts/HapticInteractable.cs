@@ -40,9 +40,9 @@ public class HapticInteractable : MonoBehaviour
         XRBaseInteractable interactable = GetComponent<XRBaseInteractable>();
 
         interactable.activated.AddListener(hapticOnActivated.TriggerHaptic);
-        interactable.hoverEntered.AddListener(hapticOnActivated.TriggerHaptic);
-        interactable.hoverExited.AddListener(hapticOnActivated.TriggerHaptic);
-        interactable.selectEntered.AddListener(hapticOnActivated.TriggerHaptic);
-        interactable.selectExited.AddListener(hapticOnActivated.TriggerHaptic);
+        interactable.hoverEntered.AddListener(hapticHoverEntered.TriggerHaptic);
+        interactable.hoverExited.AddListener(hapticHoverExited.TriggerHaptic);
+        interactable.selectEntered.AddListener(hapticSelectedEntered.TriggerHaptic);
+        interactable.selectExited.AddListener(hapticSelectedExited.TriggerHaptic);
     }
 }
