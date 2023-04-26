@@ -114,9 +114,7 @@ public class GrabHandPose : MonoBehaviour
 
     public IEnumerator SetHandDataRoutine(HandData h, Vector3 newPosition, Quaternion newRotation, Quaternion[] newBonesRotation, Vector3 startingPosition, Quaternion startingRotation, Quaternion[] startingBonesRotation)
     {
-        float timer = 0;
-
-        while(timer < poseTransitionDuration)
+        /*while(timer < poseTransitionDuration)
         {
             float t = Mathf.Clamp(timer / poseTransitionDuration, 0.0f, 1.0f);
             // Vector3 p = Vector3.Lerp(startingPosition, newPosition, t);
@@ -136,6 +134,18 @@ public class GrabHandPose : MonoBehaviour
             }
 
             timer += Time.deltaTime;
+        }*/
+
+        Vector3 p = newPosition;
+        Quaternion r = newRotation;
+
+        h.root.localPosition = p;
+        h.root.localRotation = r;
+
+
+        for (int i = 0; i < newBonesRotation.Length; i++)
+        {
+            h.fingerBones[i].localRotation = newBonesRotation[i];
         }
 
         yield return null;

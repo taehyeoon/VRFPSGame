@@ -39,4 +39,6 @@ public class XROffsetGrabInteractable : XRGrabInteractable
 
         base.OnSelectEntered(args);
     }
+
+
 }

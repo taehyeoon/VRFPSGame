@@ -8,6 +8,7 @@ TagManager:
   - Right
   - Body
   - Head
+  - Magazine
   layers:
   - Default
   - TransparentFX
