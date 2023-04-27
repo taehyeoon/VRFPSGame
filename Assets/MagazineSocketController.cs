@@ -25,7 +25,7 @@ public class MagazineSocketController : MonoBehaviour
     public void AttachMagazine(SelectEnterEventArgs args)
     {
         Transform interactable = args.interactableObject.transform;
-        interactable.parent = gameObject.transform.root;
+        interactable.SetParent(gameObject.transform.root);
 
         MeshCollider collider = interactable.GetComponent<MeshCollider>();
         collider.enabled = false;
@@ -34,11 +34,11 @@ public class MagazineSocketController : MonoBehaviour
     public void DetachMagazine(SelectExitEventArgs args)
     {
         Transform interactable = args.interactableObject.transform;
-        interactable.parent = null;
+        interactable.SetParent(null);
 
         MeshCollider collider = args.interactableObject.transform.GetComponent<MeshCollider>();
         collider.enabled = true;
 
-        Destroy(interactable, 5.0f);
+        Destroy(interactable.gameObject, 5.0f);
     }
 }
