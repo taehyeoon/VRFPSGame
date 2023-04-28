@@ -765,6 +765,7 @@ GameObject:
   - component: {fileID: 4710368847537028277}
   - component: {fileID: 4710368847537028274}
   - component: {fileID: 4710368847537028281}
+  - component: {fileID: 903891868}
   m_Layer: 7
   m_Name: Pistol 2
   m_TagString: Untagged
@@ -779,7 +780,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4710368847537028275}
-  m_LocalRotation: {x: -0, y: -0, z: 0.62196285, w: 0.78304684}
+  m_LocalRotation: {x: 0, y: 0, z: 0.62196124, w: 0.78304803}
   m_LocalPosition: {x: 32.184727, y: 0.948, z: 12.414268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -787,6 +788,7 @@ Transform:
   - {fileID: 4710368847119920443}
   - {fileID: 4710368847222686438}
   - {fileID: 4710368847401802647}
+  - {fileID: 4710368848587290173}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 76.919}
@@ -869,8 +871,16 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 6
+  m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -901,6 +911,9 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -929,6 +942,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AttachTransform: {fileID: 0}
+  m_SecondaryAttachTransform: {fileID: 0}
+  m_UseDynamicAttach: 0
+  m_MatchAttachPosition: 1
+  m_MatchAttachRotation: 1
+  m_SnapToColliderVolume: 1
+  m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
   m_MovementType: 2
   m_VelocityDamping: 1
@@ -965,9 +984,12 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  m_StartingSingleGrabTransformers: []
+  m_StartingMultipleGrabTransformers: []
+  m_AddDefaultGrabTransformers: 1
   leftAttachTransform: {fileID: 4710368847401802647}
   rightAttachTransform: {fileID: 4710368847222686438}
-  disableFirstCollider: 0
+  disableFirstCollider: 1
 --- !u!65 &4710368847537028281
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -981,6 +1003,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04994786, y: 0.15736954, z: 0.2392683}
   m_Center: {x: 0.0077892877, y: 0.06604692, z: -0.01552248}
+--- !u!114 &903891868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710368847537028275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2813226ca2e2ef9468e6cb7a12d33156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4710368847557360538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,7 +2447,9 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_AttachTransform: {fileID: 4710368848980019097}
   m_KeepSelectedTargetValid: 1
+  m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
+  m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -2426,6 +2462,8 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -3090,8 +3128,16 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 4
+  m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -3122,6 +3168,9 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -3150,6 +3199,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AttachTransform: {fileID: 0}
+  m_SecondaryAttachTransform: {fileID: 0}
+  m_UseDynamicAttach: 0
+  m_MatchAttachPosition: 1
+  m_MatchAttachRotation: 1
+  m_SnapToColliderVolume: 1
+  m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
   m_MovementType: 0
   m_VelocityDamping: 1
@@ -3186,6 +3241,9 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  m_StartingSingleGrabTransformers: []
+  m_StartingMultipleGrabTransformers: []
+  m_AddDefaultGrabTransformers: 1
 --- !u!153 &4710368848889278921
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -3663,3 +3721,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c8373aa09d164458731194953713a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &6655722441453552743
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4710368847537028278}
+    m_Modifications:
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090646382358770269, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+        type: 3}
+      propertyPath: m_Name
+      value: HoverStateVisual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f27f20bed13d9fe439aa8d8f01d6dad7, type: 3}
+--- !u!4 &4710368848587290173 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2090646382358770266, guid: f27f20bed13d9fe439aa8d8f01d6dad7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6655722441453552743}
+  m_PrefabAsset: {fileID: 0}
