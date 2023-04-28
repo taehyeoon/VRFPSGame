@@ -20,7 +20,7 @@ public class ActivateGrabRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        leftGrabRay.SetActive(leftDirectGrab.interactablesSelected.Count == 0 || leftDirectGrab.interactablesHovered.Count == 0);
-        rightGrabRay.SetActive(rightDirectGrab.interactablesSelected.Count == 0 || rightDirectGrab.interactablesHovered.Count == 0);
+        leftGrabRay.SetActive(leftDirectGrab.interactablesSelected.Count == 0 && leftDirectGrab.interactablesHovered.Count == 0);
+        rightGrabRay.SetActive(rightDirectGrab.interactablesSelected.Count == 0 && rightDirectGrab.interactablesHovered.Count == 0);
     }
 }

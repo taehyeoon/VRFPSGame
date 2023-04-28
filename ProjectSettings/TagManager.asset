@@ -9,6 +9,7 @@ TagManager:
   - Body
   - Head
   - Magazine
+  - MagazineRifle
   layers:
   - Default
   - TransparentFX
