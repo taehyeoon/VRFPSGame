@@ -8,6 +8,7 @@ public class XRGrabInteractableTwoAttach : XRGrabInteractable
     public Transform leftAttachTransform;
     public Transform rightAttachTransform;
 
+    public bool disableFirstCollider;
     /*
      * OnSelectEneterd
      * 1. 왼손, 오른손 구분
@@ -25,13 +26,15 @@ public class XRGrabInteractableTwoAttach : XRGrabInteractable
             attachTransform = rightAttachTransform;
         }
 
-        args.interactableObject.colliders[0].enabled = false;
+        if(disableFirstCollider == true)
+            args.interactableObject.colliders[0].enabled = false;
         base.OnSelectEntered(args);
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        args.interactableObject.colliders[0].enabled = true;
+        if(disableFirstCollider == true)
+            args.interactableObject.colliders[0].enabled = true;
         base.OnSelectExited(args);
     }
 }
