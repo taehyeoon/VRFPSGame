@@ -6,6 +6,7 @@ using UnityEngine;
 public class TutorialPointController : MonoBehaviour
 {
     public Action<int> tutorialPointAction;
+    public AudioClip effectAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -14,12 +15,28 @@ public class TutorialPointController : MonoBehaviour
         tutorialPointAction += ActivateNextPoint;
     }
 
+    /*
+     * audio 발생 후, 이전 Tutorial Point 비활성화, 다음 Tutorial Point 활성화
+     */
     void ActivateNextPoint(int previousOrder)
     {
-        transform.GetChild(previousOrder).gameObject.SetActive(false);
+        // Audio Effect
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(effectAudio);
+
+        // Point & Canvas invisible, visible
+        GameObject currentPoint = transform.GetChild(previousOrder).gameObject;
+        currentPoint.SetActive(false);
+        currentPoint.GetComponent<TutorialPoint>().matchingCanvas.enabled = false;
 
         GameObject nextPoint = transform.GetChild(previousOrder + 1).gameObject;
-        if (nextPoint != null)
-            nextPoint.SetActive(true);
+        if(nextPoint == null)
+        {
+            Debug.Log($"There isn't {previousOrder + 1} order UI");
+            return;
+        }
+
+        nextPoint.SetActive(true);
+        nextPoint.GetComponent<TutorialPoint>().matchingCanvas.enabled = true;
     }
 }
