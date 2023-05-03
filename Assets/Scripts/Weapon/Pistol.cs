@@ -11,6 +11,30 @@ public class Pistol : Gun
         base.Awake();
     }
 
+    public void OnActivated()
+    {
+        if (currentAmmo > 0)
+        {
+            BlowEmptyShell();
+        }
+        FireBulletOnActivate();
+    }
+
+    private void BlowEmptyShell()
+    {
+        GameObject shell = Instantiate(shellPrefab, shellPoint.position, Quaternion.identity);
+        shell.AddComponent<Rigidbody>().AddForce(Vector3.right, ForceMode.Impulse);
+        /*
+        float magnitude = 3f;
+        Vector3 pos = shell.transform.position;
+        pos.z += 1f;
+        rb.AddForceAtPosition(new Vector3(1,0,0)*magnitude, pos);
+        */
+        SphereCollider col =  shell.AddComponent<SphereCollider>();
+        col.radius = 0.01f;
+        Destroy(shell, 3f);
+    }
+
     public override void FireBulletOnActivate()
     {
         if (currentAmmo > 0)
@@ -42,7 +66,7 @@ public class Pistol : Gun
     protected override void Fire()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
+        
         bullet.AddComponent<SphereCollider>();
         bullet.AddComponent<Bullet>().SetBulletData(damage);
         Rigidbody rb = bullet.AddComponent<Rigidbody>();

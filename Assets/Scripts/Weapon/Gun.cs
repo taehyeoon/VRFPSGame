@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class Gun : MonoBehaviour
 {
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected Transform firePoint;
+    [SerializeField] protected GameObject shellPrefab;
+    [SerializeField] protected Transform shellPoint;
     [SerializeField] protected int currentAmmo;
     [SerializeField] protected int maxAmmo;
     [SerializeField] protected int magazineSize;
