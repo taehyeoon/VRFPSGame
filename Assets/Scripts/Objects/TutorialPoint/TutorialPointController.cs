@@ -27,9 +27,10 @@ public class TutorialPointController : MonoBehaviour
         audioSource.PlayOneShot(effectAudio);
 
         // Point & Canvas invisible, visible
-        GameObject currentPoint = transform.GetChild(previousOrder).gameObject;
-        currentPoint.SetActive(false);
-        currentPoint.GetComponent<TutorialPoint>().matchingCanvas.enabled = false;
+        TutorialPoint currentPoint = transform.GetChild(previousOrder).GetComponent<TutorialPoint>();
+        currentPoint.gameObject.SetActive(false);
+        if (currentPoint.matchingCanvas != null)
+            currentPoint.matchingCanvas.enabled = false;
 
         GameObject nextPoint = transform.GetChild(previousOrder + 1).gameObject;
         if(nextPoint == null)
@@ -52,7 +53,7 @@ public class TutorialPointController : MonoBehaviour
             TutorialPoint tutorialPoint = transform.GetChild(i).GetComponent<TutorialPoint>();
 
             tutorialPoint.order = i;
-            if(tutorialPoint.matchingCanvas)
+            if(tutorialPoint.matchingCanvas != null)
                 tutorialPoint.matchingCanvas.enabled = false;
             tutorialPoint.gameObject.SetActive(false);
         }

@@ -7,11 +7,18 @@ public class ClimbAnchor : XRBaseInteractable
 {
     [SerializeField]
     private ClimbingProvider climbingProvider;
+    private AudioSource audioSource;
+
+    public AudioClip audioClip;
 
     protected override void Awake()
     {
         base.Awake();
         FindClimbingProvider();
+
+        audioSource = GetComponent<AudioSource>();
+        if(audioSource == null)
+            gameObject.AddComponent<AudioSource>();
     }
 
     private void FindClimbingProvider()
@@ -26,6 +33,8 @@ public class ClimbAnchor : XRBaseInteractable
     {
         base.OnSelectEntered(args);
         TryAdd(args.interactorObject);
+
+        audioSource.PlayOneShot(audioClip);
     }
 
     private void TryAdd(IXRSelectInteractor interactor)
