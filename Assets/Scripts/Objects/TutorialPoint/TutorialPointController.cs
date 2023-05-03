@@ -9,10 +9,12 @@ public class TutorialPointController : MonoBehaviour
     public AudioClip effectAudio;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         tutorialPointAction -= ActivateNextPoint;
         tutorialPointAction += ActivateNextPoint;
+
+        InitTutorialPoints();
     }
 
     /*
@@ -37,6 +39,25 @@ public class TutorialPointController : MonoBehaviour
         }
 
         nextPoint.SetActive(true);
-        nextPoint.GetComponent<TutorialPoint>().matchingCanvas.enabled = true;
+
+        Canvas canvas = nextPoint.GetComponent<TutorialPoint>().matchingCanvas;
+        if(canvas != null)
+            canvas.enabled = true;
+    }
+
+    void InitTutorialPoints()
+    {
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            TutorialPoint tutorialPoint = transform.GetChild(i).GetComponent<TutorialPoint>();
+
+            tutorialPoint.order = i;
+            if(tutorialPoint.matchingCanvas)
+                tutorialPoint.matchingCanvas.enabled = false;
+            tutorialPoint.gameObject.SetActive(false);
+        }
+
+        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(0).GetComponent<TutorialPoint>().matchingCanvas.enabled = true;
     }
 }
