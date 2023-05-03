@@ -8,9 +8,13 @@ public class Soldier : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
+    private Animator _animator;
+    
     public float headShotMultiplier;
+    
     private void Awake()
     {
+        _animator = GetComponent<Animator>();
         currentHealth = maxHealth;
     }
 
@@ -26,6 +30,6 @@ public class Soldier : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Die");
+        _animator.CrossFade("Die", 0.2f);
     }
 }
