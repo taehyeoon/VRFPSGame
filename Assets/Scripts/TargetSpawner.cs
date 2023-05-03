@@ -12,13 +12,27 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] private int targetNum;
     [SerializeField] private float spawnInterval;
     [SerializeField] private Transform targetDirection;
-    [SerializeField] private List<bool> isTargetExistList;
     [SerializeField] private List<Transform> spawnPos;
+    [SerializeField] private List<Soldier> targetStats;
 
     private void Awake()
     {
-        isTargetExistList = Enumerable.Repeat(false, spawnPos.Count).ToList();
+        if(targetNum > spawnPos.Count) Debug.LogError("target number must be less than or equal to spawn position size");
+        targetStats = Enumerable.Repeat<Soldier>(null, spawnPos.Count).ToList();
         StartCoroutine(StartSpawn());
+    }
+
+    private void Update()
+    {
+        // Check if target is dead
+        for (int i = 0; i < targetStats.Count; i++)
+        {
+            if (!targetStats[i].Equals(null) &&
+                targetStats[i].state.Equals(ETarget.Dead))
+            {
+                targetStats[i] = null;
+            }
+        }
     }
 
     IEnumerator StartSpawn()
@@ -30,10 +44,10 @@ public class TargetSpawner : MonoBehaviour
             do
             {
                 index = Random.Range(0, spawnPos.Count);
-            } while (isTargetExistList[index]);
-
-            isTargetExistList[index] = true;
-            Instantiate(targetPrefab, spawnPos[index].position, targetDirection.rotation, gameObject.transform);
+            } while (!targetStats[index].Equals(null));
+            
+            GameObject target = Instantiate(targetPrefab, spawnPos[index].position, targetDirection.rotation, gameObject.transform);
+            targetStats[index] = target.GetComponent<Soldier>(); 
             yield return new WaitForSeconds(spawnInterval);
             targetNum--;
         }
@@ -41,11 +55,10 @@ public class TargetSpawner : MonoBehaviour
 
     private bool IsAllTargetExist()
     {
-        foreach (var isExist in isTargetExistList)
+        foreach (var targetStat in targetStats)
         {
-            if (!isExist) return false;
+            if (targetStats == null) return false;
         }
-
         return true;
     }
 }
