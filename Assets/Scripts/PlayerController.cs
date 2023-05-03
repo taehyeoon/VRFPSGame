@@ -1,82 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public enum State
-{
-    WALK,
-    RUN,
-}
 public class PlayerController : MonoBehaviour
 {
+    [Header("Speed")]
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
+
     private ContinuousMoveProviderBase _continuousMoveProvider;
-    private State _playerState;
-    #region Ω∫≈»
-    private float _walkSpeed;
-    private float _runSpeed;
-    #endregion
-
-    public InputActionProperty leftControllerThumbstickClick;
+    [SerializeField] InputActionProperty leftControllerThumbstickClick;
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Init();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        CheckRunState();
-
-        switch (_playerState)
-        {
-            case State.WALK:
-                UpdateWalk();
-                break;
-            case State.RUN:
-                UpdateRun();
-                break;
-        }
-    }
-
-    private void Init()
+    private void Awake()
     {
         _continuousMoveProvider = GetComponent<ContinuousMoveProviderBase>();
-        _playerState = State.WALK;
-
-        _walkSpeed = _continuousMoveProvider.moveSpeed;
-        _runSpeed = _walkSpeed * 3;
+        _continuousMoveProvider.moveSpeed = runSpeed;
     }
-
-    private void CheckRunState()
+    
+    void Update()
     {
-        if (leftControllerThumbstickClick.action.ReadValue<float>() > 0)
+        if (IsRunning())
         {
-            Debug.Log("Clicked");
-            if (_playerState != State.RUN)
-                _playerState = State.RUN;
+            currentSpeed = runSpeed;
         }
-
         else
         {
-            if(_playerState != State.WALK)
-                _playerState = State.WALK;
+            currentSpeed = walkSpeed;
         }
+
+        _continuousMoveProvider.moveSpeed = currentSpeed;
     }
 
-    private void UpdateRun()
+    private bool IsRunning()
     {
-        if(_continuousMoveProvider.moveSpeed < _runSpeed)
-            _continuousMoveProvider.moveSpeed = _runSpeed;
-    }
-
-    private void UpdateWalk()
-    {
-        if (_continuousMoveProvider.moveSpeed >= _runSpeed)
-            _continuousMoveProvider.moveSpeed = _walkSpeed;
+        return leftControllerThumbstickClick.action.ReadValue<float>() > 0 || Input.GetKey(KeyCode.R);
     }
 }
