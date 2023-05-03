@@ -4,31 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-// public enum EBulletType
-// {
-//     pistol,
-//     Rifle,
-// }
-
 public class Bullet : MonoBehaviour
 {
-    // public EBulletType bulletType;
     public float damage;
-    public AudioClip bulletHitWallAudio;
-    private AudioSource _audioSource;
-    private void Awake()
+    
+    public void SetBulletData(float bulletDamage)
     {
-        _audioSource = gameObject.AddComponent<AudioSource>();
-    }
-
-    public void setBulletData(float damage, AudioClip bulletHitWallAudio)
-    {
-        this.damage = damage;
-        this.bulletHitWallAudio = bulletHitWallAudio;
+        this.damage = bulletDamage;
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        _audioSource.PlayOneShot(bulletHitWallAudio);
+        Managers.Instance.audioManager.PlaySfx("pistolBulletImpactWall");
+        Destroy(gameObject);
     }
 }

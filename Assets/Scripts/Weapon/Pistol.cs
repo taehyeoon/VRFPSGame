@@ -9,8 +9,6 @@ public class Pistol : Gun
     private void Awake()
     {
         base.Awake();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public override void FireBulletOnActivate()
@@ -44,12 +42,13 @@ public class Pistol : Gun
     protected override void Fire()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.AddComponent<Bullet>().setBulletData(damage, bulletHitWallAudio);
+
+        bullet.AddComponent<SphereCollider>();
+        bullet.AddComponent<Bullet>().SetBulletData(damage);
         Rigidbody rb = bullet.AddComponent<Rigidbody>();
         rb.useGravity = false;
         rb.AddForce((-transform.forward).normalized * bulletSpeed, ForceMode.Impulse);
-        Collider col = bullet.AddComponent<SphereCollider>();
         
-        audioSource.PlayOneShot(fireAudio);
+        Managers.Instance.audioManager.PlaySfx("firePistol");
     }
 }
