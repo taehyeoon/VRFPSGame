@@ -11,7 +11,7 @@ public class Pistol : Gun
         base.Awake();
     }
 
-    public void OnActivated()
+    public override void OnActivated()
     {
         if (currentAmmo > 0)
         {
@@ -35,7 +35,7 @@ public class Pistol : Gun
         Destroy(shell, 3f);
     }
 
-    public override void FireBulletOnActivate()
+    protected override void FireBulletOnActivate()
     {
         if (currentAmmo > 0)
         {
@@ -71,6 +71,7 @@ public class Pistol : Gun
         bullet.AddComponent<Bullet>().SetBulletData(damage);
         Rigidbody rb = bullet.AddComponent<Rigidbody>();
         rb.useGravity = false;
+        rb.freezeRotation = false;
         rb.AddForce((-transform.forward).normalized * bulletSpeed, ForceMode.Impulse);
         
         Managers.Instance.audioManager.PlaySfx("firePistol");

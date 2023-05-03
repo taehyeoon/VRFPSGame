@@ -30,6 +30,7 @@ public abstract class Gun : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public abstract void FireBulletOnActivate();
+    public abstract void OnActivated();
+    protected abstract void FireBulletOnActivate();
     protected abstract void Fire();
 }
