@@ -1109,9 +1109,9 @@ MonoBehaviour:
   shellPrefab: {fileID: 4710368847849175667}
   shellPoint: {fileID: 5657813590584687293}
   currentAmmo: 5
-  maxAmmo: 20
-  magazineSize: 5
-  bulletSpeed: 5.44
+  maxAmmo: 50
+  magazineSize: 10
+  bulletSpeed: 15
   damage: 30
   fireAudio: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
   bulletHitWallAudio: {fileID: 8300000, guid: 2e071f5b8b8467d45a5e6e24c23c6ad4, type: 3}
