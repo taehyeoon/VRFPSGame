@@ -27,11 +27,9 @@ public class TargetSpawner : MonoBehaviour
         // Check if target is dead
         for (int i = 0; i < targetStats.Count; i++)
         {
-            if (!targetStats[i].Equals(null) &&
-                targetStats[i].state.Equals(ETarget.Dead))
-            {
-                targetStats[i] = null;
-            }
+            if(targetStats[i] == null) continue;
+
+            if (targetStats[i].state.Equals(ETarget.Dead)) targetStats[i] = null;
         }
     }
 
@@ -44,7 +42,7 @@ public class TargetSpawner : MonoBehaviour
             do
             {
                 index = Random.Range(0, spawnPos.Count);
-            } while (!targetStats[index].Equals(null));
+            } while (targetStats[index] != null);
             
             GameObject target = Instantiate(targetPrefab, spawnPos[index].position, targetDirection.rotation, gameObject.transform);
             targetStats[index] = target.GetComponent<Soldier>(); 
