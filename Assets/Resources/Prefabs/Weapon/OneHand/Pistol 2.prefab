@@ -31,6 +31,37 @@ Transform:
   m_Father: {fileID: 4710368847537028278}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3432925114516243444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5657813590584687293}
+  m_Layer: 7
+  m_Name: ShellPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5657813590584687293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432925114516243444}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.009, y: 0.1284, z: 0.0106}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4710368847537028278}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4710368847097025149
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +853,7 @@ Transform:
   - {fileID: 4710368847401802647}
   - {fileID: 4710368848587290173}
   - {fileID: 2668698097058608507}
+  - {fileID: 5657813590584687293}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 76.919}
@@ -943,7 +975,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2014841453}
         m_TargetAssemblyTypeName: Pistol, Assembly-CSharp
-        m_MethodName: FireBulletOnActivate
+        m_MethodName: OnActivated
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1074,10 +1106,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4710368848628174688}
   firePoint: {fileID: 2668698097058608507}
+  shellPrefab: {fileID: 4710368847849175667}
+  shellPoint: {fileID: 5657813590584687293}
   currentAmmo: 5
-  maxAmmo: 20
-  magazineSize: 5
-  bulletSpeed: 2.12
+  maxAmmo: 50
+  magazineSize: 10
+  bulletSpeed: 15
   damage: 30
   fireAudio: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
   bulletHitWallAudio: {fileID: 8300000, guid: 2e071f5b8b8467d45a5e6e24c23c6ad4, type: 3}
