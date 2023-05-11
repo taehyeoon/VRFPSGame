@@ -262,8 +262,8 @@ GameObject:
   - component: {fileID: 3772137429961843994}
   - component: {fileID: 3772137429961843995}
   - component: {fileID: 3772137429961843992}
-  - component: {fileID: 3772137429961843993}
   - component: {fileID: 3772137429961843998}
+  - component: {fileID: 4186374871653214790}
   m_Layer: 7
   m_Name: Magazine1
   m_TagString: MagazineRifle
@@ -369,7 +369,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3772137429961843993
+--- !u!114 &3772137429961843998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -378,7 +378,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 3772137429961843999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 280ab30e00c332a43bf2ff00cb927ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hapticOnActivated:
+    intensity: 0
+    duration: 0
+  hapticHoverEntered:
+    intensity: 0.5
+    duration: 0.2
+  hapticHoverExited:
+    intensity: 0
+    duration: 0
+  hapticSelectedEntered:
+    intensity: 0
+    duration: 0
+  hapticSelectedExited:
+    intensity: 0
+    duration: 0
+--- !u!114 &4186374871653214790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772137429961843999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d837ad0fab557fc439d7366e81607622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -504,33 +531,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &3772137429961843998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3772137429961843999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 280ab30e00c332a43bf2ff00cb927ff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hapticOnActivated:
-    intensity: 0
-    duration: 0
-  hapticHoverEntered:
-    intensity: 0.5
-    duration: 0.2
-  hapticHoverExited:
-    intensity: 0
-    duration: 0
-  hapticSelectedEntered:
-    intensity: 0
-    duration: 0
-  hapticSelectedExited:
-    intensity: 0
-    duration: 0
+  isAlreadInSocket: 0
 --- !u!1 &3772137430038408625
 GameObject:
   m_ObjectHideFlags: 0

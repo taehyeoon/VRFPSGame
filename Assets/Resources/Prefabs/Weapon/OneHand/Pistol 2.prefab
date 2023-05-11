@@ -2595,6 +2595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed10c9c932e4a3a408ca0cf889af9e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magazineShowed: {fileID: 4710368848307156138}
 --- !u!1 &4710368848517802535
 GameObject:
   m_ObjectHideFlags: 0

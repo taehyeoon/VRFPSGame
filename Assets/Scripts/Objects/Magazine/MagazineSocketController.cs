@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class MagazineSocketController : MonoBehaviour
 {
+    public GameObject magazineShowed;
 
     // Start is called before the first frame update
     void Start()
@@ -15,29 +16,36 @@ public class MagazineSocketController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void AttachMagazine(SelectEnterEventArgs args)
     {
         Transform interactable = args.interactableObject.transform;
         interactable.SetParent(gameObject.transform.root);
+        interactable.GetComponent<Renderer>().enabled = false;
+        if(interactable.childCount > 1)
+        {
+            for(int i = 0; i < interactable.childCount; i++)
+            {
+                interactable.GetChild(i).gameObject.SetActive(false);
+            }
+        }
 
-        MeshCollider collider = interactable.GetComponent<MeshCollider>();
-        collider.enabled = false;
+        magazineShowed.SetActive(true);
     }
 
     public void DetachMagazine(SelectExitEventArgs args)
     {
         Transform interactable = args.interactableObject.transform;
         interactable.SetParent(null);
+        interactable.GetComponent<Renderer>().enabled = true;
+        if (interactable.childCount > 1)
+        {
+            for (int i = 0; i < interactable.childCount; i++)
+            {
+                interactable.GetChild(i).gameObject.SetActive(true);
+            }
+        }
 
-        MeshCollider collider = args.interactableObject.transform.GetComponent<MeshCollider>();
-        collider.enabled = true;
+        magazineShowed.SetActive(false);
 
         Destroy(interactable.gameObject, 5.0f);
     }

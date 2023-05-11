@@ -8,6 +8,9 @@ public class TutorialPointController : MonoBehaviour
     public Action<int> tutorialPointAction;
     public AudioClip effectAudio;
 
+    [SerializeField]
+    private int childCount;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,14 +35,17 @@ public class TutorialPointController : MonoBehaviour
         if (currentPoint.matchingCanvas != null)
             currentPoint.matchingCanvas.enabled = false;
 
-        GameObject nextPoint = transform.GetChild(previousOrder + 1).gameObject;
+        if (childCount <= previousOrder + 1)
+            return;
+
+        Transform nextPoint = transform.GetChild(previousOrder + 1);
         if(nextPoint == null)
         {
             Debug.Log($"There isn't {previousOrder + 1} order UI");
             return;
         }
 
-        nextPoint.SetActive(true);
+        nextPoint.gameObject.SetActive(true);
 
         Canvas canvas = nextPoint.GetComponent<TutorialPoint>().matchingCanvas;
         if(canvas != null)
@@ -60,5 +66,7 @@ public class TutorialPointController : MonoBehaviour
 
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(0).GetComponent<TutorialPoint>().matchingCanvas.enabled = true;
+
+        childCount = transform.childCount;
     }
 }
