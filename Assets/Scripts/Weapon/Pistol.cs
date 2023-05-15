@@ -6,20 +6,48 @@ using UnityEngine;
 
 public class Pistol : Gun
 {
-    private void Awake()
+    protected override float SlidePullAmount { get; set; }
+
+    private new void Awake()
     {
         base.Awake();
+        SlidePullAmount = 0.02f;
     }
 
+    // Executed when the grab button on the controller holding the gun is pressed
     public override void OnActivated()
     {
-        if (currentAmmo > 0)
+        if (!isMagazineAttached)
         {
-            BlowEmptyShell();
+            // Tick sound
+            Debug.Log("Join the magazine");
+            return;
         }
-        FireBulletOnActivate();
+
+        if (!isSliderReleased)
+        {
+            Debug.Log("Release the slider to fire");
+            return;
+        }
+
+        // Fire
+        if(currentAmmo > 0)
+        {
+            Fire();
+            BlowEmptyShell();
+            currentAmmo -= 1;
+        }
+        else
+        {
+            // tick sound
+            Debug.Log("Reload to fire");
+        }
+
+
+
     }
 
+    // Discharge of the empty shell
     private void BlowEmptyShell()
     {
         GameObject shell = Instantiate(shellPrefab, shellPoint.position, Quaternion.identity);
@@ -35,34 +63,6 @@ public class Pistol : Gun
         Destroy(shell, 3f);
     }
 
-    protected override void FireBulletOnActivate()
-    {
-        if (currentAmmo > 0)
-        {
-            Fire();
-            currentAmmo--;
-        }
-        else
-        {
-            if (maxAmmo >= magazineSize)
-            {
-                currentAmmo = magazineSize;
-                maxAmmo -= currentAmmo;
-                Fire();
-            }
-            else if(maxAmmo > 0)
-            {
-                currentAmmo = maxAmmo;
-                maxAmmo = 0;
-                Fire();
-            }
-            else
-            {
-                Debug.Log("outOfAmmo");
-            }
-        }
-    }
-
     protected override void Fire()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -75,5 +75,30 @@ public class Pistol : Gun
         rb.AddForce((-transform.forward).normalized * bulletSpeed, ForceMode.Impulse);
         
         Managers.Instance.audioManager.PlaySfx("firePistol");
+    }
+
+    // If the slider moves by SlidePullAmount, it is recognized as reloaded
+    public override void CheckIsLoaded()
+    {
+        if (initialSliderZPos != 0 && initialSliderZPos - slider.transform.localPosition.z > SlidePullAmount)
+        {
+            Reload();
+            initialSliderZPos = 0;
+        }
+    }
+
+    public override void MarkInitialSliderZPosition()
+    {
+        initialSliderZPos = slider.transform.localPosition.z;
+    }
+
+    protected override void Reload()
+    {
+        // Calculate the number of ammunition to reload
+        int reloadAmmoCount = Math.Min(magazineSize - currentAmmo, maxAmmo); 
+        maxAmmo -= reloadAmmoCount;
+        
+        // Increase the current number of ammunition by the calculated value
+        currentAmmo += reloadAmmoCount;
     }
 }

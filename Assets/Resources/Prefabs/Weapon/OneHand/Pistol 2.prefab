@@ -1104,15 +1104,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4f58399ca2b4b93ace48eced0dce60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4710368848628174688}
-  firePoint: {fileID: 2668698097058608507}
-  shellPrefab: {fileID: 4710368847849175667}
-  shellPoint: {fileID: 5657813590584687293}
-  currentAmmo: 5
+  damage: 30
+  currentAmmo: 0
   maxAmmo: 50
   magazineSize: 10
   bulletSpeed: 15
-  damage: 30
+  firePoint: {fileID: 2668698097058608507}
+  shellPoint: {fileID: 5657813590584687293}
+  slider: {fileID: 4710368848889278918}
+  bulletPrefab: {fileID: 4710368848628174688}
+  shellPrefab: {fileID: 4710368847849175667}
+  magazineSocket: {fileID: 4710368848307156138}
   fireAudio: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
   bulletHitWallAudio: {fileID: 8300000, guid: 2e071f5b8b8467d45a5e6e24c23c6ad4, type: 3}
 --- !u!1 &4710368847557360538
