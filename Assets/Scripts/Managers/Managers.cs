@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 public class Managers : MonoBehaviour
 {
     public static Managers Instance;
-    public GameManager gameManger;
+    public GameManager gameManager;
     public AudioManager audioManager;
 
     private void Awake()

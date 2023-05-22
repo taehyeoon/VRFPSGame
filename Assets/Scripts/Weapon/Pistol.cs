@@ -69,18 +69,12 @@ public class Pistol : Gun
 
     protected override void Fire()
     {
-        Debug.Log("play animation");
-        // fireani.Play();
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         
-        bullet.AddComponent<SphereCollider>();
-        bullet.AddComponent<Bullet>().SetBulletData(damage);
-        Rigidbody rb = bullet.AddComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.freezeRotation = false;
+        bullet.GetComponent<Bullet>().SetBulletData(damage);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.AddForce((-transform.forward).normalized * bulletSpeed, ForceMode.Impulse);
         
-        // Managers.Instance.audioManager.PlaySfx("firePistol");
         Managers.Instance.audioManager.PlayPistol("fire_pistol");
     }
 

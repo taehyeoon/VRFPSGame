@@ -6,31 +6,13 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 { 
-    public AudioSource musicSource, sfxSource, pistolSource;
+    public AudioSource musicSource, sfxSource, pistolSource, bulletSource;
 
-    public Sound[] musicSounds, sfxSounds, pistolSounds;
+    public Sound[] musicSounds, sfxSounds, pistolSounds, bulletSounds;
 
-    // [Header("pistol")] 
-    // public AudioClip fire_pistol;
-    // public AudioClip dry_fire_pistol;
-    // public AudioClip reload_pistol;
-    //
-    void Awake()
+    public void PlayMusic(string sName)
     {
-        // InitSound();
-    }
-
-    // private void InitSound()
-    // {
-    //     string pistol_root = "Audios/Pistol/";
-    //     fire_pistol = Resources.Load<AudioClip>(pistol_root + fire_pistol);
-    //     dry_fire_pistol = Resources.Load<AudioClip>(pistol_root + dry_fire_pistol);
-    //     reload_pistol = Resources.Load<AudioClip>(pistol_root + reload_pistol);
-    // }
-
-    public void PlayMusic(string name)
-    {
-        Sound s = Array.Find(musicSounds, x => x.name == name);
+        Sound s = Array.Find(musicSounds, x => x.name == sName);
         if (s == null)
         {
             Debug.Log("music Sound not found");
@@ -42,9 +24,9 @@ public class AudioManager : MonoBehaviour
         }
     }
     
-    public void PlaySfx(string name)
+    public void PlaySfx(string sName)
     {
-        Sound s = Array.Find(sfxSounds, x => x.name == name);
+        Sound s = Array.Find(sfxSounds, x => x.name == sName);
         if (s == null)
         {
             Debug.Log("SFX Sound not found");
@@ -65,6 +47,19 @@ public class AudioManager : MonoBehaviour
         else
         {
             pistolSource.PlayOneShot(s.clip);
+        }
+    }
+
+    public void PlayBullet(string sName)
+    {
+        Sound s = Array.Find(bulletSounds, x => x.name == sName);
+        if (s == null)
+        {
+            Debug.Log("SFX Sound not found");
+        }
+        else
+        {
+            bulletSource.PlayOneShot(s.clip);
         }
     }
 }

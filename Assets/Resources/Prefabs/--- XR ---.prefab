@@ -2810,7 +2810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4563516687284639689
 Transform:
   m_ObjectHideFlags: 0
@@ -5855,6 +5855,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4054769e29d3c4b93a552882a5083a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSpeed: 0
+  walkSpeed: 5
+  runSpeed: 0
   leftControllerThumbstickClick:
     m_UseReference: 1
     m_Action:
