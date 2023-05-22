@@ -37,13 +37,8 @@ public abstract class Gun : MonoBehaviour
     protected float effectRange;
     protected float recoil;
 
-    [SerializeField] protected AudioClip fireAudio;
-    [SerializeField] protected AudioClip bulletHitWallAudio;
-    protected AudioSource audioSource;
-    
     protected void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         isSliderReleased = true;
     }
 

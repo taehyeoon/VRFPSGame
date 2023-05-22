@@ -15,7 +15,8 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Managers.Instance.audioManager.PlaySfx("pistolBulletImpactWall");
+        // Managers.Instance.audioManager.PlaySfx("pistolBulletImpactWall");
+        Managers.Instance.audioManager.PlayPistol("hit_concrete");
         Destroy(gameObject);
     }
 }

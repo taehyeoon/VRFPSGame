@@ -843,8 +843,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4710368847537028275}
-  m_LocalRotation: {x: 0, y: 0, z: 0.62196124, w: 0.78304803}
-  m_LocalPosition: {x: 32.184727, y: 0.948, z: 12.414268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -856,7 +856,7 @@ Transform:
   - {fileID: 5657813590584687293}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 76.919}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4710368847537028279
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1107,16 +1107,14 @@ MonoBehaviour:
   damage: 30
   currentAmmo: 0
   maxAmmo: 50
-  magazineSize: 10
-  bulletSpeed: 15
+  magazineSize: 30
+  bulletSpeed: 30
   firePoint: {fileID: 2668698097058608507}
   shellPoint: {fileID: 5657813590584687293}
   slider: {fileID: 4710368848889278918}
   bulletPrefab: {fileID: 4710368848628174688}
   shellPrefab: {fileID: 4710368847849175667}
   magazineSocket: {fileID: 4710368848307156138}
-  fireAudio: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
-  bulletHitWallAudio: {fileID: 8300000, guid: 2e071f5b8b8467d45a5e6e24c23c6ad4, type: 3}
 --- !u!1 &4710368847557360538
 GameObject:
   m_ObjectHideFlags: 0
