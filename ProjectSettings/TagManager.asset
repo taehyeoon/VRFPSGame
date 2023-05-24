@@ -11,6 +11,10 @@ TagManager:
   - Magazine
   - MagazineRifle
   - Door
+  - Concrete
+  - Metal
+  - Glass
+  - Dirt
   layers:
   - Default
   - TransparentFX

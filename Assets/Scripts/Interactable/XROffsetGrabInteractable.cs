@@ -45,6 +45,8 @@ public class XROffsetGrabInteractable : XRGrabInteractable
             attachTransform.rotation = initialLocalRot;
         }
         
+        Managers.Instance.audioManager.PlayPistol("reload_pistol");
+        
         gunScript.MarkInitialSliderZPosition();
         gunScript.SetIsSliderReleased(false);
         

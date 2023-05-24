@@ -8,6 +8,8 @@ public class Pistol : Gun
 {
     protected override float SlidePullAmount { get; set; }
 
+    // Check which hand is holding the gun
+    private XRGrabInteractableTwoAttach grabInteractableTwoAttach;
     private new void Awake()
     {
         base.Awake();
@@ -20,6 +22,7 @@ public class Pistol : Gun
         if (!isMagazineAttached)
         {
             // Tick sound
+            Managers.Instance.audioManager.PlayPistol("dry_fire_pistol");
             Debug.Log("Join the magazine");
             return;
         }
@@ -40,6 +43,7 @@ public class Pistol : Gun
         else
         {
             // tick sound
+            Managers.Instance.audioManager.PlayPistol("dry_fire_pistol");
             Debug.Log("Reload to fire");
         }
 
@@ -67,17 +71,14 @@ public class Pistol : Gun
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         
-        bullet.AddComponent<SphereCollider>();
-        bullet.AddComponent<Bullet>().SetBulletData(damage);
-        Rigidbody rb = bullet.AddComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.freezeRotation = false;
+        bullet.GetComponent<Bullet>().SetBulletData(damage);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.AddForce((-transform.forward).normalized * bulletSpeed, ForceMode.Impulse);
         
-        Managers.Instance.audioManager.PlaySfx("firePistol");
+        Managers.Instance.audioManager.PlayPistol("fire_pistol");
     }
 
-    // If the slider moves by SlidePullAmount, it is recognized as reloaded
+    // If the slider moves by "SlidePullAmount", it is recognized as reloaded
     public override void CheckIsLoaded()
     {
         if (initialSliderZPos != 0 && initialSliderZPos - slider.transform.localPosition.z > SlidePullAmount)
@@ -100,5 +101,10 @@ public class Pistol : Gun
         
         // Increase the current number of ammunition by the calculated value
         currentAmmo += reloadAmmoCount;
+    }
+
+    public void SetAnimatorFalse()
+    {
+        Debug.Log("set animator false");
     }
 }

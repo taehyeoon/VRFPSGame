@@ -5,19 +5,14 @@ using System.Reflection.Emit;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
-{
-    [SerializeField] AudioSource musicSource, sfxSource;
+{ 
+    public AudioSource musicSource, sfxSource, pistolSource, bulletSource;
 
-    public Sound[] musicSounds, sfxSounds;
+    public Sound[] musicSounds, sfxSounds, pistolSounds, bulletSounds;
 
-    private void Awake()
+    public void PlayMusic(string sName)
     {
-        // _audios.Add();
-    }
-
-    public void PlayMusic(string name)
-    {
-        Sound s = Array.Find(musicSounds, x => x.name == name);
+        Sound s = Array.Find(musicSounds, x => x.name == sName);
         if (s == null)
         {
             Debug.Log("music Sound not found");
@@ -29,9 +24,9 @@ public class AudioManager : MonoBehaviour
         }
     }
     
-    public void PlaySfx(string name)
+    public void PlaySfx(string sName)
     {
-        Sound s = Array.Find(sfxSounds, x => x.name == name);
+        Sound s = Array.Find(sfxSounds, x => x.name == sName);
         if (s == null)
         {
             Debug.Log("SFX Sound not found");
@@ -39,6 +34,32 @@ public class AudioManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.clip);
+        }
+    }
+
+    public void PlayPistol(string sName)
+    {
+        Sound s = Array.Find(pistolSounds, x => x.name == sName);
+        if (s == null)
+        {
+            Debug.Log("SFX Sound not found");
+        }
+        else
+        {
+            pistolSource.PlayOneShot(s.clip);
+        }
+    }
+
+    public void PlayBullet(string sName)
+    {
+        Sound s = Array.Find(bulletSounds, x => x.name == sName);
+        if (s == null)
+        {
+            Debug.Log("SFX Sound not found");
+        }
+        else
+        {
+            bulletSource.PlayOneShot(s.clip);
         }
     }
 }

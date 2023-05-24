@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public PlayerController player;
+    
     private void Awake()
     {
         // for Unity editor test
