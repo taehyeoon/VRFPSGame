@@ -33,14 +33,6 @@ public class GrabHandPose : MonoBehaviour
         leftHandPose.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
-
     // Hand Pose Set up
     public void SetupPose(BaseInteractionEventArgs arg)
     {

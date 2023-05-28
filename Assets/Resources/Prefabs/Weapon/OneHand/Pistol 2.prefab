@@ -829,6 +829,7 @@ GameObject:
   - component: {fileID: 4710368847537028281}
   - component: {fileID: 903891868}
   - component: {fileID: 2014841453}
+  - component: {fileID: 1421410269}
   m_Layer: 7
   m_Name: Pistol 2
   m_TagString: Untagged
@@ -907,7 +908,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4710368847537028275}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e8bd0a868f852e49a6cc01d0ac0b584, type: 3}
   m_Name: 
@@ -1116,6 +1117,22 @@ MonoBehaviour:
     type: 3}
   shellPrefab: {fileID: 4710368847849175667}
   magazineSocket: {fileID: 4710368848307156138}
+--- !u!114 &1421410269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710368847537028275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce7e48cf1175864186186566a27e6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHandPose: {fileID: 4710368847537936700}
+  leftHandPose: {fileID: 4710368848033975153}
+  rightRenderer: {fileID: 0}
+  leftRenderer: {fileID: 0}
 --- !u!1 &4710368847557360538
 GameObject:
   m_ObjectHideFlags: 0
