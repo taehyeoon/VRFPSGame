@@ -21,5 +21,7 @@ public class Managers : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        gameManager.player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 }
