@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public abstract class Gun : MonoBehaviour
 {
@@ -31,6 +33,9 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected GameObject shellPrefab;
     [SerializeField] protected GameObject magazineSocket;
 
+    [Header("Controller")]
+    [SerializeField] protected InputActionProperty unloadMagazine;
+
     protected int fireRate;
     protected int range;
     protected float accuracy;
@@ -45,6 +50,12 @@ public abstract class Gun : MonoBehaviour
     protected void Update()
     {
         isMagazineAttached = magazineSocket.activeSelf;
+
+        if (isMagazineAttached)
+        {
+            if (unloadMagazine.action.ReadValue<float>() >= 0.8 || Input.GetKey(KeyCode.T))
+                UnloadMagzine();
+        }
     }
 
     public abstract void OnActivated();
@@ -53,6 +64,13 @@ public abstract class Gun : MonoBehaviour
     
     public abstract void CheckIsLoaded();
     public abstract void MarkInitialSliderZPosition();
+
+    // find gun's magazine, enabled false
+    protected void UnloadMagzine()
+    {
+        MagazineInteractable magazine = GetComponentInChildren<MagazineInteractable>();
+        magazine.enabled = false;
+    }
 
     public void SetIsSliderReleased(bool value)
     {

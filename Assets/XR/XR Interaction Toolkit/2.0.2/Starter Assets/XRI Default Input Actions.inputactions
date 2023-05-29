@@ -876,6 +876,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Unload Magazine",
+                    "type": "Button",
+                    "id": "a805bbb2-fa8b-44c1-a1e8-19f244af93a9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1054,6 +1063,17 @@
                     "action": "Translate Anchor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "25c988b3-aa40-45a0-ae0e-b90d1da2d55a",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Unload Magazine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

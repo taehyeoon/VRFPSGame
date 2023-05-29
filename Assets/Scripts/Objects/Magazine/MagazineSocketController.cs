@@ -35,7 +35,7 @@ public class MagazineSocketController : MonoBehaviour
     public void DetachMagazine(SelectExitEventArgs args)
     {
         Transform interactable = args.interactableObject.transform;
-        interactable.SetParent(null);
+        // interactable.SetParent(null);
         interactable.GetComponent<Renderer>().enabled = true;
         if (interactable.childCount > 1)
         {
