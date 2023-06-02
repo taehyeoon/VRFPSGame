@@ -7,11 +7,13 @@ public class Pistol : Gun
 
     // Check which hand is holding the gun
     private XRGrabInteractableTwoAttach grabInteractableTwoAttach;
+    private SetActiveGrabHand currentHand;
     private new void Awake()
     {
         base.Awake();
         SlidePullAmount = 0.02f;
         animator = GetComponent<Animator>();
+        currentHand = GetComponent<SetActiveGrabHand>();
         animator.enabled = false;
     }
 
@@ -78,7 +80,13 @@ public class Pistol : Gun
         Managers.Instance.audioManager.PlayPistol("fire_pistol");
         
         animator.SetTrigger("MoveSlider");
-        Managers.Instance.gameManager.player.GetComponent<Animator>().SetTrigger("LeftFire");
+        Debug.Log(currentHand.CurrentHand.ToString());
+        
+        if(currentHand.CurrentHand == HandData.HandModelType.Left)
+            Managers.Instance.gameManager.player.GetComponent<Animator>().SetTrigger("LeftFire");
+        else if(currentHand.CurrentHand == HandData.HandModelType.Right)
+            Managers.Instance.gameManager.player.GetComponent<Animator>().SetTrigger("RightFire");
+
     }
 
     // If the slider moves by "SlidePullAmount", it is recognized as reloaded
