@@ -68,7 +68,7 @@ public class Pistol : Gun
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         
-        bullet.GetComponent<Bullet>().SetBulletData(damage);
+        bullet.GetComponent<Bullet>().SetBulletData(damage, range, firePoint.position);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.AddForce((-transform.forward).normalized * bulletSpeed, ForceMode.Impulse);
         
@@ -103,5 +103,11 @@ public class Pistol : Gun
     public void SetAnimatorFalse()
     {
         Debug.Log("set animator false");
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(firePoint.position, firePoint.position + (-firePoint.forward).normalized * range);
     }
 }

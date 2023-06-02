@@ -830,6 +830,7 @@ GameObject:
   - component: {fileID: 903891868}
   - component: {fileID: 2014841453}
   - component: {fileID: 1421410269}
+  - component: {fileID: 1421410270}
   m_Layer: 7
   m_Name: Pistol 2
   m_TagString: Untagged
@@ -1110,6 +1111,7 @@ MonoBehaviour:
   maxAmmo: 50
   magazineSize: 30
   bulletSpeed: 30
+  range: 100
   firePoint: {fileID: 2668698097058608507}
   shellPoint: {fileID: 5657813590584687293}
   slider: {fileID: 4710368848889278918}
@@ -1117,6 +1119,19 @@ MonoBehaviour:
     type: 3}
   shellPrefab: {fileID: 4710368847849175667}
   magazineSocket: {fileID: 4710368848307156138}
+  unloadMagazine:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Unload Magazine
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 197387ef-e4d0-403b-bc02-a9e9a909ea93
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 7051656723607987606, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
 --- !u!114 &1421410269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,6 +1148,21 @@ MonoBehaviour:
   leftHandPose: {fileID: 4710368848033975153}
   rightRenderer: {fileID: 0}
   leftRenderer: {fileID: 0}
+--- !u!114 &1421410270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710368847537028275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c136b463d91eb74c90d06fca5e650b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayOnStart: 0
+  m_Recording: {fileID: 0}
+  m_XRController: {fileID: 0}
 --- !u!1 &4710368847557360538
 GameObject:
   m_ObjectHideFlags: 0

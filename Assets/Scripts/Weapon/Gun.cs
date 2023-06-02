@@ -21,7 +21,8 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected int maxAmmo;
     [SerializeField] protected int magazineSize;
     [SerializeField] protected float bulletSpeed;
-
+    [SerializeField] protected float range;
+    
     [Header("Position")]
     [SerializeField] protected Transform firePoint;
     [SerializeField] protected Transform shellPoint;
@@ -36,8 +37,8 @@ public abstract class Gun : MonoBehaviour
     [Header("Controller")]
     [SerializeField] protected InputActionProperty unloadMagazine;
 
+    
     protected int fireRate;
-    protected int range;
     protected float accuracy;
     protected float effectRange;
     protected float recoil;

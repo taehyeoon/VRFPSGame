@@ -7,24 +7,49 @@ using UnityEngine.Serialization;
 public class Bullet : MonoBehaviour
 {
     public float damage;
-
+    public float range;
+    
     public float maxDistance;
     public float minDistance;
     public float maxVolume;
     public float minVolume;
-    
-    public void SetBulletData(float bulletDamage)
+
+    // Current bullet travel distance
+    public float bulletCurrentRange;
+    public Vector3 bulletStartPosition;
+    public void SetBulletData(float bulletDamage, float bulletRange, Vector3 bulletStartPos)
     {
-        this.damage = bulletDamage;
+        damage = bulletDamage;
+        range = bulletRange;
+        bulletStartPosition = bulletStartPos;
+    }
+
+    private void Update()
+    {
+        CalcBulletCurrentRange();
+        
+        if (bulletCurrentRange > range)
+        {
+            Debug.Log("destroy Bullet on " + bulletCurrentRange);
+            Destroy(gameObject);
+        }
+    }
+
+    private void CalcBulletCurrentRange()
+    {
+        bulletCurrentRange = Vector3.Distance(transform.position, bulletStartPosition);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         Vector3 playerPos = Managers.Instance.gameManager.player.transform.position;
-        float distance = Vector3.Distance(transform.position, playerPos);
-        Debug.Log("Bullet collides at" + distance+ " distance");
+        // Distance between bullet crash point and current player
+        float hitPointDistanceFromPlayer = Vector3.Distance(transform.position, playerPos);
+
+        Debug.Log("Bullet collides at" + hitPointDistanceFromPlayer+ " distance");
+
         // Adjust the volume according to the distance
-        float volume = Mathf.Lerp(maxVolume, minVolume, (distance - minDistance) / (maxDistance - minDistance));
+        float volume = Mathf.Lerp(maxVolume, minVolume, (hitPointDistanceFromPlayer - minDistance) / (maxDistance - minDistance));
         Managers.Instance.audioManager.bulletSource.volume = volume;
         
         if(collision.gameObject.CompareTag("Body"))
@@ -40,6 +65,7 @@ public class Bullet : MonoBehaviour
         else
             Managers.Instance.audioManager.PlayBullet("hit_concrete");
         
+        Debug.Log("[collosion]  " + gameObject.name + " : destroy at " + bulletCurrentRange);
         Destroy(gameObject);
     }
 }
