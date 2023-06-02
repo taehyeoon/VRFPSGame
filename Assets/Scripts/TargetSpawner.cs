@@ -15,6 +15,9 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] private List<Transform> spawnPos;
     [SerializeField] private List<Soldier> targetStats;
 
+    // If the target is not shot and killed during this time, it will disappear automatically
+    public float targetLifeTime;
+
     private void Awake()
     {
         if(targetNum > spawnPos.Count) Debug.LogError("target number must be less than or equal to spawn position size");
@@ -45,7 +48,9 @@ public class TargetSpawner : MonoBehaviour
             } while (targetStats[index] != null);
             
             GameObject target = Instantiate(targetPrefab, spawnPos[index].position, targetDirection.rotation, gameObject.transform);
-            targetStats[index] = target.GetComponent<Soldier>(); 
+            targetStats[index] = target.GetComponent<Soldier>();
+            Debug.Log("target index " + index + "  " +  targetStats[index]);
+            targetStats[index].targetLifeTime = targetLifeTime;
             yield return new WaitForSeconds(spawnInterval);
             targetNum--;
         }

@@ -251,7 +251,6 @@ MonoBehaviour:
   targetNum: 5
   spawnInterval: 2
   targetDirection: {fileID: 431292411435400311}
-  isTargetExistList: 
   spawnPos:
   - {fileID: 2568084134436119768}
   - {fileID: 4973872166508110641}
@@ -261,6 +260,8 @@ MonoBehaviour:
   - {fileID: 1145006330191179502}
   - {fileID: 3182264480026579060}
   - {fileID: 981239747194507497}
+  targetStats: []
+  targetLifeTime: 3
 --- !u!1 &1287121216276154662
 GameObject:
   m_ObjectHideFlags: 0
