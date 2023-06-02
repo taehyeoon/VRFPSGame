@@ -5807,6 +5807,7 @@ GameObject:
   - component: {fileID: 4563516688604434252}
   - component: {fileID: 4563516688604434255}
   - component: {fileID: 4563516688604434254}
+  - component: {fileID: 11181343}
   m_Layer: 6
   m_Name: XR Origin
   m_TagString: Player
@@ -6123,6 +6124,26 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 3763045112356612705, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+--- !u!95 &11181343
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563516688604434248}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 769aa64a14dd64b39b3598772764a11f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &4563516688632024701
 GameObject:
   m_ObjectHideFlags: 0

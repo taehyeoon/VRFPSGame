@@ -78,7 +78,7 @@ public class Pistol : Gun
         Managers.Instance.audioManager.PlayPistol("fire_pistol");
         
         animator.SetTrigger("MoveSlider");
-        
+        Managers.Instance.gameManager.player.GetComponent<Animator>().SetTrigger("LeftFire");
     }
 
     // If the slider moves by "SlidePullAmount", it is recognized as reloaded
