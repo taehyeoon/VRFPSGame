@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -11,6 +12,9 @@ public class SetActiveGrabHand : MonoBehaviour
     public Renderer rightRenderer;
     public Renderer leftRenderer;
 
+    public HandData.HandModelType CurrentHand { get; private set; } // unsetpose 시 None, setupPose 시 Left or Right
+
+
     void Start()
     {
         XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
@@ -19,6 +23,8 @@ public class SetActiveGrabHand : MonoBehaviour
 
         rightHandPose.gameObject.SetActive(false);
         leftHandPose.gameObject.SetActive(false);
+
+        CurrentHand = HandData.HandModelType.None;
     }
 
     // Hand Pose Set up
@@ -32,6 +38,8 @@ public class SetActiveGrabHand : MonoBehaviour
             // 오른손
             if (handData.handType == HandData.HandModelType.Right)
             {
+                CurrentHand = HandData.HandModelType.Right;
+
                 rightHandPose.gameObject.SetActive(true);
                 rightRenderer.enabled = false;
             }
@@ -39,6 +47,8 @@ public class SetActiveGrabHand : MonoBehaviour
             // 왼손
             else
             {
+                CurrentHand = HandData.HandModelType.Left;
+
                 leftHandPose.gameObject.SetActive(true);
                 leftRenderer.enabled = false;
             }
@@ -51,6 +61,8 @@ public class SetActiveGrabHand : MonoBehaviour
         if (arg.interactorObject is XRDirectInteractor)
         {
             HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
+
+            CurrentHand = HandData.HandModelType.None;
 
             // 오른손
             if (handData.handType == HandData.HandModelType.Right)

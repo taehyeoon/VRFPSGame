@@ -7,7 +7,8 @@ public class HandData : MonoBehaviour
     public enum HandModelType
     {
         Left,
-        Right
+        Right,
+        None
     }
 
     public HandModelType handType;          // 왼손, 오른손 구분
