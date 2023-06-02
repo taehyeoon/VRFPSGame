@@ -831,6 +831,7 @@ GameObject:
   - component: {fileID: 2014841453}
   - component: {fileID: 1421410269}
   - component: {fileID: 1421410270}
+  - component: {fileID: 1421410279}
   m_Layer: 7
   m_Name: Pistol 2
   m_TagString: Untagged
@@ -1111,7 +1112,7 @@ MonoBehaviour:
   maxAmmo: 50
   magazineSize: 30
   bulletSpeed: 30
-  range: 100
+  range: 50
   firePoint: {fileID: 2668698097058608507}
   shellPoint: {fileID: 5657813590584687293}
   slider: {fileID: 4710368848889278918}
@@ -1132,6 +1133,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 7051656723607987606, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+  animator: {fileID: 0}
 --- !u!114 &1421410269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1163,6 +1165,26 @@ MonoBehaviour:
   m_PlayOnStart: 0
   m_Recording: {fileID: 0}
   m_XRController: {fileID: 0}
+--- !u!95 &1421410279
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710368847537028275}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ed47db45c5a34704a44797a8b02ddd6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &4710368847557360538
 GameObject:
   m_ObjectHideFlags: 0

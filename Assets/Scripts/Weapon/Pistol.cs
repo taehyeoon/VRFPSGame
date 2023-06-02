@@ -11,7 +11,10 @@ public class Pistol : Gun
     {
         base.Awake();
         SlidePullAmount = 0.02f;
+        animator = GetComponent<Animator>();
+        animator.enabled = false;
     }
+
 
     // Executed when the grab button on the controller holding the gun is pressed
     public override void OnActivated()
@@ -73,6 +76,9 @@ public class Pistol : Gun
         rb.AddForce((-transform.forward).normalized * bulletSpeed, ForceMode.Impulse);
         
         Managers.Instance.audioManager.PlayPistol("fire_pistol");
+        
+        animator.SetTrigger("MoveSlider");
+        
     }
 
     // If the slider moves by "SlidePullAmount", it is recognized as reloaded
@@ -99,12 +105,7 @@ public class Pistol : Gun
         // Increase the current number of ammunition by the calculated value
         currentAmmo += reloadAmmoCount;
     }
-
-    public void SetAnimatorFalse()
-    {
-        Debug.Log("set animator false");
-    }
-
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -37,7 +37,10 @@ public abstract class Gun : MonoBehaviour
     [Header("Controller")]
     [SerializeField] protected InputActionProperty unloadMagazine;
 
-    
+    [Header("Animation")]
+    public Animator animator;
+
+
     protected int fireRate;
     protected float accuracy;
     protected float effectRange;

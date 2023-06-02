@@ -28,6 +28,7 @@ public class XROffsetGrabInteractable : XRGrabInteractable
         
         Transform grandParentTransform = transform.parent.parent;
         gunScript = grandParentTransform.GetComponentInParent<Gun>();
+        
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -47,6 +48,8 @@ public class XROffsetGrabInteractable : XRGrabInteractable
         
         Managers.Instance.audioManager.PlayPistol("reload_pistol");
         
+        // Turn off slider animation when you hold the slider
+        gunScript.animator.enabled = false;
         gunScript.MarkInitialSliderZPosition();
         gunScript.SetIsSliderReleased(false);
         
@@ -67,6 +70,9 @@ public class XROffsetGrabInteractable : XRGrabInteractable
         base.OnSelectExited(args);
 
         gunScript.SetIsSliderReleased(true);
+        
+        // Animated action when you release the slider
+        gunScript.animator.enabled = true;
         if (sliderCoroutine != null)
         {
             // Stop calculating the slider's position if you release your hand from the slider
