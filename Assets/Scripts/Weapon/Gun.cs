@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -22,6 +23,8 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected int magazineSize;
     [SerializeField] protected float bulletSpeed;
     [SerializeField] protected float range;
+    [SerializeField] protected GameObject ammoUI;
+    protected TMP_Text ammoText;
     
     [Header("Position")]
     [SerializeField] protected Transform firePoint;
@@ -49,6 +52,8 @@ public abstract class Gun : MonoBehaviour
     protected void Awake()
     {
         isSliderReleased = true;
+        ammoUI.SetActive(false);
+        ammoText = ammoUI.transform.Find("AmmoText").GetComponent<TMP_Text>();
     }
 
     protected void Update()
@@ -57,8 +62,13 @@ public abstract class Gun : MonoBehaviour
 
         if (isMagazineAttached)
         {
+            ammoUI.SetActive(true);
             if (unloadMagazine.action.ReadValue<float>() >= 0.8 || Input.GetKey(KeyCode.T))
                 UnloadMagzine();
+        }
+        else
+        {
+            ammoUI.SetActive(false);
         }
     }
 

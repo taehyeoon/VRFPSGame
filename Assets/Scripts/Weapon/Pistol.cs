@@ -8,6 +8,7 @@ public class Pistol : Gun
     // Check which hand is holding the gun
     private XRGrabInteractableTwoAttach grabInteractableTwoAttach;
     private SetActiveGrabHand currentHand;
+    
     private new void Awake()
     {
         base.Awake();
@@ -38,9 +39,9 @@ public class Pistol : Gun
         // Fire
         if(currentAmmo > 0)
         {
+            currentAmmo -= 1;
             Fire();
             BlowEmptyShell();
-            currentAmmo -= 1;
         }
         else
         {
@@ -48,9 +49,6 @@ public class Pistol : Gun
             Managers.Instance.audioManager.PlayPistol("dry_fire_pistol");
             Debug.Log("Reload to fire");
         }
-
-
-
     }
 
     // Discharge of the empty shell
@@ -71,6 +69,8 @@ public class Pistol : Gun
 
     protected override void Fire()
     {
+        RefreshAmmoUI();
+        
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         
         bullet.GetComponent<Bullet>().SetBulletData(damage, range, firePoint.position);
@@ -86,7 +86,6 @@ public class Pistol : Gun
             Managers.Instance.gameManager.player.GetComponent<Animator>().SetTrigger("LeftFire");
         else if(currentHand.CurrentHand == HandData.HandModelType.Right)
             Managers.Instance.gameManager.player.GetComponent<Animator>().SetTrigger("RightFire");
-
     }
 
     // If the slider moves by "SlidePullAmount", it is recognized as reloaded
@@ -112,11 +111,19 @@ public class Pistol : Gun
         
         // Increase the current number of ammunition by the calculated value
         currentAmmo += reloadAmmoCount;
+        
+        RefreshAmmoUI();
     }
     
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(firePoint.position, firePoint.position + (-firePoint.forward).normalized * range);
+    }
+
+    public void RefreshAmmoUI()
+    {
+        // Update ammoUI
+        ammoText.text = $"{currentAmmo} / {maxAmmo}"; 
     }
 }
