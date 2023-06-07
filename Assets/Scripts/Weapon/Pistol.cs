@@ -112,6 +112,8 @@ public class Pistol : Gun
         // Increase the current number of ammunition by the calculated value
         currentAmmo += reloadAmmoCount;
         
+        Managers.Instance.audioManager.PlayPistol("reload_pistol");
+
         RefreshAmmoUI();
     }
     

@@ -45,9 +45,6 @@ public class XROffsetGrabInteractable : XRGrabInteractable
             attachTransform.localPosition = initialLocalPos;
             attachTransform.rotation = initialLocalRot;
         }
-        
-        Managers.Instance.audioManager.PlayPistol("reload_pistol");
-        
         // Turn off slider animation when you hold the slider
         gunScript.animator.enabled = false;
         gunScript.MarkInitialSliderZPosition();
