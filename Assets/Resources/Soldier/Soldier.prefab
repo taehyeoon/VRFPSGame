@@ -2289,7 +2289,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   currentHealth: 0
+  state: 0
   headShotMultiplier: 3
+  targetLifeTime: 0
+  testForDieAnimation: 0
 --- !u!1 &7649280862563078441
 GameObject:
   m_ObjectHideFlags: 0

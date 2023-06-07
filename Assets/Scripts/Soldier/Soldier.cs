@@ -20,13 +20,12 @@ public class Soldier : MonoBehaviour
 
     // If the target is not shot and killed during this time, it will disappear automatically
     public float targetLifeTime;
-
+    
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         state = ETarget.Stay;
         currentHealth = maxHealth;
-        
     }
 
     private void Start()
@@ -37,6 +36,9 @@ public class Soldier : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
+        // No damage if target is dead
+        if(state == ETarget.Dead) return;
+        
         Debug.Log($"take damage  {damageAmount}");
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
@@ -48,6 +50,7 @@ public class Soldier : MonoBehaviour
     private void Die()
     {
         state = ETarget.Dead;
-        _animator.CrossFade("Die", 0.2f);
+        _animator.SetTrigger("Die");
+        ScoreController.kill();
     }
 }

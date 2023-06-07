@@ -277,7 +277,7 @@ MonoBehaviour:
   - {fileID: 610037213576262194}
   - {fileID: 4835318162781853299}
   targetStats: []
-  targetLifeTime: 3
+  targetLifeTime: 30
 --- !u!1 &1287121216276154662
 GameObject:
   m_ObjectHideFlags: 0
