@@ -49,21 +49,19 @@ public class PlayerController : MonoBehaviour
         }
 
         _continuousMoveProvider.moveSpeed = currentSpeed;
-        
-        
+
+
         if (isPlayerStop)
         {
-            Managers.Instance.audioManager.StopFootStep();            
+            Managers.Instance.audioManager.StopFootStep();
         }
         else
         {
-
-
             RaycastHit hit;
             Ray ray = new Ray(transform.position + new Vector3(0, 0.5f, 0), Vector3.down);
 
             // Perform the raycast
-            if (Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("Floor")))
+            if (Physics.Raycast(ray, out hit, 1.0f, LayerMask.GetMask("Floor")))
             {
                 if (hit.collider.CompareTag("Metal") && !Managers.Instance.audioManager.metalSource.isPlaying)
                 {
@@ -74,7 +72,8 @@ public class PlayerController : MonoBehaviour
                 {
                     Managers.Instance.audioManager.StopFootStep();
                     Managers.Instance.audioManager.StartWood();
-                }else if (hit.collider.CompareTag("Concrete") && !Managers.Instance.audioManager.concreteSource.isPlaying)
+                }
+                else if (hit.collider.CompareTag("Concrete") && !Managers.Instance.audioManager.concreteSource.isPlaying)
                 {
                     Managers.Instance.audioManager.StopFootStep();
                     Managers.Instance.audioManager.StartConcrete();
