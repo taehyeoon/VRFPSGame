@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 { 
-    public AudioSource musicSource, sfxSource, pistolSource, bulletSource;
+    public AudioSource musicSource, sfxSource, pistolSource, bulletSource, 
+        metalSource, concreteSource, woodSource;
 
-    public Sound[] musicSounds, sfxSounds, pistolSounds, bulletSounds;
+    public Sound[] musicSounds, sfxSounds, pistolSounds, bulletSounds, footstepSounds;
 
     public void PlayMusic(string sName)
     {
@@ -61,5 +62,25 @@ public class AudioManager : MonoBehaviour
         {
             bulletSource.PlayOneShot(s.clip);
         }
+    }
+
+    public void StartMetal()
+    {
+        metalSource.Play();
+    }
+    public void StartConcrete()
+    {
+        concreteSource.Play();
+    }
+    public void StartWood()
+    {
+        woodSource.Play();
+    }
+
+    public void StopFootStep()
+    {
+        metalSource.Stop();
+        concreteSource.Stop();
+        woodSource.Stop();
     }
 }

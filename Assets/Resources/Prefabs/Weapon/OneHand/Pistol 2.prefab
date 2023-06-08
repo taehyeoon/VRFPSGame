@@ -1071,6 +1071,7 @@ GameObject:
   - component: {fileID: 1421410279}
   - component: {fileID: 7328793232698209229}
   - component: {fileID: 4555615270662768696}
+  - component: {fileID: 3391150917715712336}
   m_Layer: 7
   m_Name: Pistol 2
   m_TagString: Untagged
@@ -1347,7 +1348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4f58399ca2b4b93ace48eced0dce60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   currentAmmo: 0
   maxAmmo: 500
   magazineSize: 100
@@ -1442,6 +1443,21 @@ MonoBehaviour:
   m_Recording: {fileID: 0}
   m_XRController: {fileID: 0}
 --- !u!114 &4555615270662768696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710368847537028275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c136b463d91eb74c90d06fca5e650b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayOnStart: 0
+  m_Recording: {fileID: 0}
+  m_XRController: {fileID: 0}
+--- !u!114 &3391150917715712336
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
