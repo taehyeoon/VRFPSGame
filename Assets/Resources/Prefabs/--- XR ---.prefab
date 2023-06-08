@@ -3060,7 +3060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4563516687284639689
 Transform:
   m_ObjectHideFlags: 0
@@ -5822,8 +5822,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4563516688604434248}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.301654, y: 0.1, z: 0.5495351}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6110,7 +6110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpeed: 0
   walkSpeed: 5
-  runSpeed: 0
+  runSpeed: 10
   leftControllerThumbstickClick:
     m_UseReference: 1
     m_Action:
@@ -6124,6 +6124,11 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 3763045112356612705, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  prePos: {x: 0, y: 0, z: 0}
+  isPlayerStop: 0
 --- !u!95 &11181343
 Animator:
   serializedVersion: 5
