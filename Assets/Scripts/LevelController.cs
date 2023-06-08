@@ -13,7 +13,9 @@ public enum ELevelState
 public class LevelController : MonoBehaviour
 {
     public GameObject easySpawner;
+    public GameObject normalSpawner;
     public Transform easyPos;
+    public Transform normalPos;
     public ELevelState curLevelState;
     public GameObject curLevelSpawner;
 
@@ -39,14 +41,33 @@ public class LevelController : MonoBehaviour
             Debug.Log("Level interruption");
             curLevelSpawner = null;
             curLevelState = ELevelState.None;
-            TimeController.setPause(true);
+            TimeController.setPause(true, ELevelState.Easy);
         }
         else
         {
             Debug.Log("easy Level start");
             curLevelSpawner = Instantiate(easySpawner, easyPos.position, Quaternion.identity);
             curLevelState = ELevelState.Easy;
-            TimeController.setPause(false);
+            TimeController.setPause(false, ELevelState.Easy);
+        }
+    }
+    
+    public void NormalButtonClicked()
+    {
+        Destroy(curLevelSpawner);
+        if (curLevelState == ELevelState.Normal)
+        {
+            Debug.Log("Level interruption");
+            curLevelSpawner = null;
+            curLevelState = ELevelState.None;
+            TimeController.setPause(true, ELevelState.Normal);
+        }
+        else
+        {
+            Debug.Log("normal Level start");
+            curLevelSpawner = Instantiate(normalSpawner, normalPos.position, Quaternion.identity);
+            curLevelState = ELevelState.Normal;
+            TimeController.setPause(false, ELevelState.Normal);
         }
     }
 }

@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class TimeController : MonoBehaviour
 {
     public float easyLimitTime;
+    public float normalLimitTime;
+    public float hardLimitTime;
     public float remainingTime;
     
     public TMP_Text timeText;
@@ -15,18 +17,18 @@ public class TimeController : MonoBehaviour
     private LevelController lc;
     private bool isPause;
 
-    public static Action<bool> setPause;
+    public static Action<bool, ELevelState> setPause;
 
     private void Awake()
     {
-        isPause = false;
+        isPause = true;
         lc = GameObject.Find("LevelController").GetComponent<LevelController>();
         RefreshTimeUI();
         
-        setPause = (val) =>
+        setPause = (isPauseInput, levelState) =>
         {
             // stop
-            if (val)
+            if (isPauseInput)
             {
                 isPause = true;
             }
@@ -34,7 +36,12 @@ public class TimeController : MonoBehaviour
             else
             {
                 isPause = false;
-                remainingTime = easyLimitTime;
+                if(levelState == ELevelState.Easy)
+                    remainingTime = easyLimitTime;
+                else if (levelState == ELevelState.Normal)
+                    remainingTime = normalLimitTime;
+                else if (levelState == ELevelState.Hard)
+                    remainingTime = hardLimitTime;
             }
         };
     }
