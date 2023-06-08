@@ -64,4 +64,15 @@ public class TargetSpawner : MonoBehaviour
         }
         return true;
     }
+
+    public bool SetSpawnerData(int tNumber, float spawnIntervalTime, float tLifeTime)
+    {
+        if (tNumber > spawnPos.Count) return false;
+        
+        this.targetNum = tNumber;
+        this.spawnInterval = spawnIntervalTime;
+        this.targetLifeTime = tLifeTime;
+
+        return true;
+    }
 }

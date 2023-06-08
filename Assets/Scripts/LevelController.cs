@@ -47,6 +47,7 @@ public class LevelController : MonoBehaviour
         {
             Debug.Log("easy Level start");
             curLevelSpawner = Instantiate(easySpawner, easyPos.position, Quaternion.identity);
+            curLevelSpawner.GetComponent<TargetSpawner>().SetSpawnerData(10, 2, 30);
             curLevelState = ELevelState.Easy;
             TimeController.setPause(false, ELevelState.Easy);
         }
@@ -66,6 +67,7 @@ public class LevelController : MonoBehaviour
         {
             Debug.Log("normal Level start");
             curLevelSpawner = Instantiate(normalSpawner, normalPos.position, Quaternion.identity);
+            curLevelSpawner.GetComponent<TargetSpawner>().SetSpawnerData(20, 1, 5);
             curLevelState = ELevelState.Normal;
             TimeController.setPause(false, ELevelState.Normal);
         }

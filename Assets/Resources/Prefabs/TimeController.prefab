@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c0f04e93eec45b2a60d883504f7a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easyLimitTime: 120
-  normalLimitTime: 90
+  easyLimitTime: 90
+  normalLimitTime: 60
   hardLimitTime: 60
   remainingTime: 0
   timeText: {fileID: 3524113779752252828}
